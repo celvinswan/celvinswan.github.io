@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<!-- Begin Head -->
+<head>
+    {% include partials/head.js.html %}
+    {% include partials/head.meta.html %}
+    
+    <title>
+        {% if page.title %}
+            {{ page.title }} | {{ site.title }}
+        {% else %}
+            {{ site.title }}
+        {% endif %}
+    </title>
+    
+    {% include partials/head.link.html %}
+    {% include partials/head.style.html %}
+</head>
+<!-- End Head -->
+
+<!-- Body -->
+<body>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    {%- include body.fb-chat.html -%}
+    {%- include nav.html -%}
+
+    {% assign words = content | number_of_words %}
+    {% assign duration = words | divided_by: 180 %}
+    
+    <div id="app" class="pt-10 w-screen">
+        {% if page.image %}
+        <div class="w-screen h-auto bg-no-repeat bg-cover bg-center text-white text-center"
+            style='background-image: linear-gradient(rgba(0,0,24,1),rgba(0,0,24,0.6),rgba(0,0,24,0.25),rgba(0,0,24,0)), url({{ page.image }})'>
+        {% else %}
+        <div class="w-screen h-auto bg-no-repeat bg-cover bg-center text-white text-center"
+            style='background-image: linear-gradient(rgba(0,0,24,0.5),rgba(0,0,24,0.8))'>
+        {% endif %}
+        {% if page.unsplash %}
+        <div class="container mx-auto py-28 md:py-40">
+        {% else %}
+        <div class="container mx-auto py-28 md:py-48">
+        {% endif %}
+                <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4">
+                    {{ page.title | default: 'Reprehenderit adipisicing reprehenderit amet laboris excepteur mollit enim esse.' }}
+                </h1>
+                <h3 class="text-xs tracking-widest text-gray-300">{{ page.date | date_to_string }} | {{ words }} kata | {{ duration }}+ menit</h3>
+                {% if page.unsplash %}
+                    {% if page.unsplash.name %}
+                        <h3 class="mt-6 mb-2 uppercase text-xs tracking-widest text-gray-300">Photo by</h3>
+                        <a class="opacity-25 hover:opacity-50 transition-opacity duration-200 justify-center items-center bg-black rounded font-bold text-sm text-white py-1 px-2 flex flex-shrink max-w-xs w-40 mx-auto"
+                            href="https://unsplash.com/@{{ page.unsplash.author }}?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+                            target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from {{ page.unsplash.name }}">
+                            <span class="inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="height:12px;fill:white" viewBox="0 0 32 32">
+                                    <title>unsplash-logo</title>
+                                    <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+                                </svg>
+                            </span>
+                            <span class="inline-block pl-4">
+                                {{ page.unsplash.name }}
+                            </span>
+                        </a>
+                    {% elsif page.unsplash.author %}
+                        <h3 class="uppercase text-xs tracking-widest text-gray-300">Photo by <a href="{{ page.unsplash.photo }}">@{{ page.unsplash.author }}</a> on Unsplash</h3>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Page Content -->
+        <div class="container">
+            {{ content }}
+        </div>
+    </div>
+
+    {%- include footer.html -%}
+
+    {% if page.js %}
+        {% include {{ page.js | prepend: 'page/' }} %}
+    {% endif %}
+</body>
+<!-- End Body -->
+
+</html>

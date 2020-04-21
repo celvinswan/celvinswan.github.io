@@ -1,0 +1,151 @@
+---
+
+layout: default
+title: Tentang Kami
+permalink: /about
+js: js.about.html
+
+meta:
+  title: Tentang Kami
+  description: GBI Grogol merupakan bagian dari Gereja Bethel Indonesia cabang Gatot Subroto Rayon 1B yang berada di bawah penggembalaan Ps. Dr. Ir. Niko Njotorahardjo.
+
+---
+{% assign data = site.data.org.info %}
+
+<!-- <div class="min-h-screen"> -->
+<div class="min-h-screen bg-cover bg-center sm:bg-center bg-no-repeat"
+    style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/assets/img/hero/hero_about_us.jpg);">
+    <div class="container flex flex-col mx-auto justify-center h-screen w-screen text-center">
+        <p class="uppercase text-base font-bold text-white mb-4">
+            Tentang
+        </p>
+        <h1 class="text-3xl sm:text-4xl md:text-6xl text-white mb-2">
+            GBI Grogol
+        </h1>
+        <p class="text-base md:text-lg lg:text-2xl text-white mb-4">
+            Berkarakter Kristus dan Berdampak.
+        </p>
+        <p class="mt-4 text-sm md:text-base lg:text-xl text-white mb-0">
+            GBI Grogol, merupakan bagian dari Gereja Bethel Indonesia cabang Gatot Subroto Rayon 1B,<br>
+            yang berada di bawah penggembalaan Ps. Dr. Ir. Niko Njotorahardjo.<br><br>
+            Dibentuk pada 14 November 1993, dengan (alm.) Pdt. Arianto Susetio ditunjuk<br>
+            gembala cabang, dengan tongkat estafet diserahkan kepada Pdt. Simeon Santoso pada tahun 2004.
+        </p>
+    </div>
+</div>
+
+<div class="min-h-screen bg-red-800">
+    <div class="container mx-auto grid grid-cols-1 xl:grid-cols-4 gap-4 text-white">
+        <div class="w-full col-span-1 xl:col-span-4">
+            <h2 class="text-2xl text-center sm:text-3xl md:text-4xl lg:text-5xl mb-12">Visi, Misi, dan Karakteristik</h2>
+        </div>
+        <div class="w-full col-span-1">
+            <h3 class="text-xl text-center xl:text-left sm:text-2xl md:text-3xl lg:text-4xl">
+                Visi
+            </h3>
+        </div>
+        <div class="w-full col-span-1 mb-8 xl:mb-12 xl:col-span-3 mb-12">
+            <p class="text-base text-center sm:text-lg lg:text-3xl xl:text-xl xl:text-left">
+                Menjadi gereja pemulihan yang berkarakter Kristus, dan berdampak bagi lingkungan, kota, dan bangsa.
+            </p>
+        </div>
+        <div class="w-full col-span-1">
+            <h3 class="text-xl text-center xl:text-left sm:text-2xl md:text-3xl lg:text-4xl">
+                Misi
+            </h3>
+        </div>
+        <div class="w-full col-span-1 mb-8 xl:mb-12 xl:col-span-3 mb-12">
+            <ol>
+                {% for mission in data.missions %}
+                <li class="text-base sm:text-lg lg:text-3xl xl:text-xl mb-2">
+                    {{ mission.data }}
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="w-full col-span-1">
+            <h3 class="text-xl text-center xl:text-left sm:text-2xl md:text-3xl lg:text-4xl">
+                Karakteristik
+            </h3>
+        </div>
+        <div class="w-full col-span-1 xl:col-span-3 mb-12">
+            <div class="grid grid-cols-2 gap-4 xl:grid-cols-5">
+                {% for culture in data.cultures %}
+                <div class="w-full col-sm-2 text-center">
+                    <i class="la la-{{ culture.icon }} text-4xl mb-4 xl:text-6xl"></i>
+                    <h4 class="text-xl xl:text-2xl">{{ culture.name }}</h4>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="min-h-screen">
+    <div class="container grid grid-cols-1 xl:grid-cols-2 gap-4 mx-auto">
+        <div class="col-span-1 xl:col-span-2">
+            <h2 class="text-3xl sm:text-4xl xl:text-5xl text-center">Gembala GBI Grogol</h2>
+        </div>
+        <!-- Main Leader -->
+        <div class="mt-8">
+            <div class="block shadow-md mx-auto w-full md:w-2/3">
+                <img class="w-full" src="{{ data.leader.main.photo }}" alt="{{ data.leader.main.name }}">
+                <div class="bg-red-800 px-4 py-4 text-white">
+                    <h4 class="text-lg sm:text-xl mb-0">{{ data.leader.main.name }}</h4>
+                    <p class="text-base font-bold">Gembala Cabang</p>
+                </div>
+                <div class="bg-white px-4 py-4 mb-5">
+                    <p>{{ data.leader.main.quote }}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Vice Leader -->
+        <div class="mt-8">
+            <div class="block shadow-md mx-auto w-full md:w-2/3">
+                <img class="w-full" src="{{ data.leader.vice.photo }}" alt="{{ data.leader.vice.name }}">
+                <div class="bg-red-800 px-4 py-4 text-white">
+                    <h4 class="text-lg sm:text-xl mb-0">{{ data.leader.vice.name }}</h4>
+                    <p class="text-base font-bold">Wakil Gembala Cabang</p>
+                </div>
+                <div class="bg-white px-4 py-4 mb-5">
+                    <p>{{ data.leader.vice.quote }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="min-h-screen"> -->
+<div class="min-h-screen bg-no-repeat bg-cover bg-center"
+    style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/assets/img/hero/hero_sunday_service.jpg);">
+    <div class="container flex flex-col mx-auto h-screen w-screen text-left justify-end lg:justify-center">
+        <h1 class="uppercase text-3xl sm:text-4xl md:text-6xl text-white">
+            Ibadah Raya
+        </h1>
+        <p class="text-base sm:text-lg text-white mb-0">
+            07.30 | 10.00 | 17.00
+        </p>
+        <p class="text-base sm:text-lg text-white mb-5">
+            Setiap Minggu
+        </p>
+        <p class="text-lg text-white mb-0">
+            Ibadah Sekolah Minggu diadakan beriringan dengan jadwal Ibadah Raya,<br>
+            dan ibadah The ACT Teens diadakan hanya pada pukul 10.00.
+        </p>
+    </div>
+</div>
+
+<!-- <div class="min-h-screen"> -->
+<div class="min-h-screen bg-no-repeat bg-cover bg-center"
+    style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/assets/img/hero/hero_misi.jpg);">
+    <div class="container flex flex-col mx-auto h-screen w-screen text-left justify-end lg:justify-center">
+        <h1 class="uppercase text-3xl sm:text-4xl md:text-6xl text-white">
+            Pelayanan Misi
+        </h1>
+        <p class="text-lg lg:text-2xl text-white mb-0">
+            GBI Grogol juga mengadakan Pelayanan Misi ke pulau-pulau,<br>
+            untuk menjangkau yang tidak terjangkau.
+        </p>
+    </div>
+</div>
